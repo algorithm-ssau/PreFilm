@@ -2,10 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("../env.json");
 
-const app = express();
-const PORT = config.backend.serverPort;
 const corsMiddleware = require('./middleware/cors.middleware')
-
 const authRouter = require("./routes/auth.routes");
 
 const app = express();
@@ -24,7 +21,7 @@ const start = async () => {
 			console.log(`Server started on port ${PORT}`);
 		})
 	} catch (e) {
-
+		console.log(e);
 	}
 };
 
