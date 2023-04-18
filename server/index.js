@@ -1,9 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("../env.json");
-
 const app = express();
 const PORT = config.backend.serverPort;
+const corsMiddleware = require('./middleware/cors.middleware')
+
+
+app.use(corsMiddleware);
 const start = async () => {
 	try {
 		await mongoose.connect(config.backend.dbURL);
