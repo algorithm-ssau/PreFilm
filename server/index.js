@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const config = require("../env.json");
 
 const corsMiddleware = require('./middleware/cors.middleware')
-const authRouter = require("./routes/auth.routes");
+const adminRouter = require('./routes/admin.routes');
 
 const app = express();
 const PORT = config.backend.serverPort;
@@ -11,7 +11,7 @@ const PORT = config.backend.serverPort;
 app.use(express.json());
 app.use(corsMiddleware);
 
-app.use("/api/auth", authRouter);
+app.use('/api/admin', adminRouter);
 
 const start = async () => {
 	try {
