@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("../env.json");
 
-const authRouter = require("./routes/auth.routes");
+const corsMiddleware = require('./middleware/cors.middleware')
+const adminRouter = require('./routes/admin.routes');
 
 const app = express();
 const PORT = config.backend.serverPort;
@@ -12,7 +13,9 @@ const corsMiddleware=require('./middleware/corse.middleware');
 app.use(corsMiddleware);
 
 app.use(express.json());
-app.use("/api/auth", authRouter);
+app.use(corsMiddleware);
+
+app.use('/api/admin', adminRouter);
 
 const start = async () => {
 	try {
@@ -22,7 +25,7 @@ const start = async () => {
 			console.log(`Server started on port ${PORT}`);
 		})
 	} catch (e) {
-
+		console.log(e);
 	}
 };
 
