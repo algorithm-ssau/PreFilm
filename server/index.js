@@ -8,10 +8,6 @@ const adminRouter = require('./routes/admin.routes');
 const app = express();
 const PORT = config.backend.serverPort;
 
-const corsMiddleware=require('./middleware/corse.middleware');
-
-app.use(corsMiddleware);
-
 app.use(express.json());
 app.use(corsMiddleware);
 
